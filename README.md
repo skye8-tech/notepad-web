@@ -1,2 +1,5 @@
 # notepad-web
-html, tailwindcss, javascript
+
+
+
+Link: https://notepad-web1.netlify.app/
