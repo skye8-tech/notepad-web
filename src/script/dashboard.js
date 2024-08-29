@@ -92,7 +92,78 @@ function renderFilterButtons() {
 
 renderFilterButtons();
 
-const p = new Person();
-p.setName("Lionel");
-console.log(person.name);
-console.log(p.getName());
+// Note
+/// Define the data structure of the note
+// title, and body
+const note = {
+  title: "My First Note",
+  body: "This is my first note.",
+};
+
+// Update the note with the other 2 properties {category/folder, timestamp(date created, date updated), hashTags}
+// 1. We use native js object
+// 2. You are going to use classes
+
+class Note {
+  constructor(title, body) {
+    this.title = title;
+    this.body = body;
+  }
+  // getters and setters.
+  setName(title) {
+    this.title = title;
+  }
+}
+const notes = [
+  {
+    title: "My First Note",
+    body: "This is my first note.",
+    category: "Work",
+    timestamp: new Date(),
+    hashTags: ["#programming", "#javascript"],
+    // id: 0,
+  },
+  {
+    title: "My Second Note",
+    body: "This is my second note.",
+    category: "Personal",
+    timestamp: new Date(),
+    hashTags: ["#life", "#goals"],
+  },
+];
+
+// const noteDiv = ` <div
+//                 class="bg-[#1F1F1F] w-64 p-2 rounded-md border border-solid border-white"
+//               >
+//                 <h1 class="text-2xl text-white">Darker image</h1>
+//                 <p>
+//                   Lorem Ipsum é simplesmente uma simulação de texto da indústria
+//                   tipográfica e de impressos, e vem ...
+//                 </p>
+//               </div>`;
+
+const noteParent = document.getElementById("notes");
+
+notes.forEach(function (note) {
+  const noteChild = document.createElement("div");
+  noteChild.setAttribute(
+    "class",
+    "bg-[#1F1F1F] w-64 p-2 rounded-md border border-solid border-white my-2"
+  );
+  const titleTag = document.createElement("h1");
+  titleTag.setAttribute("class", "text-2xl text-white");
+  titleTag.textContent = note.title;
+
+  const p = document.createElement("p");
+  p.textContent = note.body;
+  noteChild.appendChild(titleTag);
+  noteChild.appendChild(p);
+  noteParent.appendChild(noteChild);
+});
+
+// instead of using foreach, use a for loop to accomplish the above.
+// fix the overflow content on the left sidebar
+// fn 1
+// ----> fn2
+// ------> fn3
+// --------> fn4
