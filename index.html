@@ -13,23 +13,29 @@
       referrerpolicy="no-referrer"
     />
   </head>
-  <body class="bg-slate-950 h-screen flex flex-col justify-between items-center">
-    <header class="text-center w-full h-[60vh] flex flex-col justify-center items-center">
+  <body
+    class="bg-slate-950 h-screen flex flex-col justify-between items-center"
+  >
+    <header
+      class="text-center w-full h-[60vh] flex flex-col justify-center items-center"
+    >
       <div class="">
         <p class="text-white text-center text-2xl px-6 py-2 font-normal">
           Welcome to <span class="font-medium">Notepad Web</span>
         </p>
-        <form>
+        <form id="start-form">
           <div class="mb-2">
             <input
               type="text"
               class="block mx-auto bg-gray-500 text-gray-50 text-sm rounded-lg w-72 p-2.5 text-center"
               placeholder="Enter your Name"
+              id="name"
             />
           </div>
           <button
             type="Start Note"
             class="text-white bg-primary font-medium rounded-lg text-sm w-72 px-20 py-1.5"
+            id="start-now"
           >
             <i class="fa-solid fa-pen mr-2"></i>start Now
           </button>
@@ -49,5 +55,24 @@
         <i class="fa-brands fa-linkedin"></i>
       </div>
     </footer>
+    <script>
+      const startNowBtn = document.getElementById("start-now");
+      const startForm = document.getElementById("start-form");
+      const name = document.getElementById("name");
+
+      startNowBtn.addEventListener("click", function (e) {
+        console.log("Button is clicked");
+      });
+
+      startForm.addEventListener("submit", startNow);
+
+      function startNow(e) {
+        e.preventDefault();
+        // console.log(name.value);
+        localStorage.setItem("name", name.value);
+        console.log("Form submitted");
+        window.location.href = "./src/pages/dashboard.html";
+      }
+    </script>
   </body>
 </html>
